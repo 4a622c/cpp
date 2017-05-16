@@ -2,31 +2,38 @@
 #include<algorithm>
 #include<vector>
 #include<string>
+#include<cmath>
 #define INF 1000000000
 using namespace std;
 typedef long double Ld;
 
 Ld cal(Ld x, Ld y, int op) {
-//0Š„‚è‚ğINF‚ÅÀ‘•‚µ‚Ä‚¢‚é‚Ì‚ÅA0‚ğ“ü‚ê‚é‚ÆƒoƒO‚é‚±‚Æ‚ª‚ ‚è‚Ü‚·B
+//0å‰²ã‚Šã‚’INFã§å®Ÿè£…ã—ã¦ã„ã‚‹ã®ã§ã€0ã‚’å…¥ã‚Œã‚‹ã¨ãƒã‚°ã‚‹ã“ã¨ãŒã‚ã‚Šã¾ã™ã€‚
 	if (op == 0)return x + y;
 	else if (op == 1)return x - y;
 	else if(op==2)return x*y;
-	else {
+	else if(op==3){
 		if (!y)return INF;
 		else return x / y;
+	}
+	else if (op == 4) {
+		if (x == 0 && y == 0)return 1;
+		else if (x == 0)return 0;
+		return pow(x, y);
+	}
+	else if (op == 5) {
+		if (y == 0)return INF;
+		return pow(x, 1 / y);
 	}
 }
 
 int main() {
 	Ld a, b, c, d;
-	cout << "X puzzle..." << endl;
-	cout << "written by A.D.509" << endl;
-	cout << "puts 4 number..." << endl;
-	cout << "‚à‚µ0‚ª“ü‚Á‚Ä‚¢‚éê‡A³í‚É“®‚©‚È‚¢ê‡‚ª‚ ‚è‚Ü‚·..." << endl;
-	cout << "0‚ª4‚Â‚ÅI—¹" << endl;
+	cout << "ã‚‚ã—0ãŒå…¥ã£ã¦ã„ã‚‹å ´åˆã€æ­£å¸¸ã«å‹•ã‹ãªã„å ´åˆãŒã‚ã‚Šã¾ã™..." << endl;
+	cout << "0ãŒ4ã¤ã§çµ‚äº†" << endl;
 	while (cin >> a >> b >> c >> d) {
 		if (a == 0 && b == 0 && c == 0 && d == 0)break;
-		cout << "What number do you want to make?" << endl;
+		cout << "Make X..." << endl;
 		Ld n;
 		cin >> n;
 		vector<Ld>k;
@@ -37,13 +44,13 @@ int main() {
 		k.push_back(d);
 		sort(k.begin(), k.end());
 
-		string o[4] = { " + "," - "," * " ,"/"};
+		string o[100] = { " + "," - "," * " ,"/","^","âˆš"};
 		int flg = 1;
 
 		do {
-			for (int i = 0; i<4; i++) {//op1
-				for (int j = 0; j < 4; j++) {//op2
-					for (int l = 0; l < 4; l++) {//op3
+			for (int i = 0; i<6; i++) {//op1
+				for (int j = 0; j < 6; j++) {//op2
+					for (int l = 0; l < 6; l++) {//op3
 							Ld e = cal(cal(cal(k[0], k[1], i), k[2], j), k[3], l);
 							Ld f = cal(cal(k[0], k[1], i), cal(k[2], k[3], l), j);
 							Ld g = cal(cal(k[0], cal(k[1], k[2], j), i), k[3], l);
