@@ -8,7 +8,7 @@ using namespace std;
 typedef long double Ld;
 
 Ld cal(Ld x, Ld y, int op) {
-//0割りをINFで実装しているので、0を入れるとバグることがあります。
+//undefined動作をINFで実装しているので、0を入れるとバグることがあります。
 	if (op == 0)return x + y;
 	else if (op == 1)return x - y;
 	else if(op==2)return x*y;
@@ -17,7 +17,7 @@ Ld cal(Ld x, Ld y, int op) {
 		else return x / y;
 	}
 	else if (op == 4) {
-		if (x == 0 && y == 0)return 1;
+		if (x == 0 && y == 0)return INF;
 		else if (x == 0)return 0;
 		return pow(x, y);
 	}
