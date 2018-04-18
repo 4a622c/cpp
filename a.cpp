@@ -16,15 +16,7 @@ Ld cal(Ld x, Ld y, int op) {
 		if (!y)return INF;
 		else return x / y;
 	}
-	else if (op == 4) {
-		if (x == 0 && y == 0)return INF;
-		else if (x == 0)return 0;
-		return pow(x, y);
-	}
-	else if (op == 5) {
-		if (y == 0)return INF;
-		return pow(x, 1 / y);
-	}
+	
 }
 
 int main() {
@@ -48,9 +40,9 @@ int main() {
 		int flg = 1;
 
 		do {
-			for (int i = 0; i<6; i++) {//op1
-				for (int j = 0; j < 6; j++) {//op2
-					for (int l = 0; l < 6; l++) {//op3
+			for (int i = 0; i<4; i++) {//op1
+				for (int j = 0; j < 4; j++) {//op2
+					for (int l = 0; l < 4; l++) {//op3
 							Ld e = cal(cal(cal(k[0], k[1], i), k[2], j), k[3], l);
 							Ld f = cal(cal(k[0], k[1], i), cal(k[2], k[3], l), j);
 							Ld g = cal(cal(k[0], cal(k[1], k[2], j), i), k[3], l);
